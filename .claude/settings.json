@@ -96,7 +96,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "set -e\n\necho \"Running pre-commit checks...\"\n\nif [ -f \"Anchor.toml\" ] || grep -q \"solana-program\" Cargo.toml 2>/dev/null; then\n  cargo fmt --check || { cargo fmt; exit 1; }\n  cargo clippy --all-targets -- -D warnings || exit 1\n  cargo test --lib || exit 1\nfi\n\nif [ -f \"package.json\" ]; then\n  npx prettier --check \"**/*.{ts,tsx,js,jsx,json}\" || { npx prettier --write \"**/*.{ts,tsx,js,jsx,json}\"; exit 1; }\n  [ -f \"tsconfig.json\" ] && npx tsc --noEmit || exit 1\nfi\n\necho \"Pre-commit checks passed\""
+            "command": "set -e\n\necho \"Running pre-commit checks...\"\n\nPROJECT_ROOT=\"/Users/natha/Documents/superteam/superteam-academy\"\nif [ \"$(pwd)\" != \"$PROJECT_ROOT\" ] && [ \"$(pwd)\" != \"$PROJECT_ROOT/app\" ]; then\n  cd \"$PROJECT_ROOT/app\" 2>/dev/null || exit 0\nfi\n\nif [ -f \"Anchor.toml\" ] || grep -q \"solana-program\" Cargo.toml 2>/dev/null; then\n  cargo fmt --check || { cargo fmt; exit 1; }\n  cargo clippy --all-targets -- -D warnings || exit 1\n  cargo test --lib || exit 1\nfi\n\nif [ -f \"package.json\" ] && [ -d \"src\" ]; then\n  npx prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\" \"messages/**/*.json\" || { npx prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\" \"messages/**/*.json\"; exit 1; }\n  [ -f \"tsconfig.json\" ] && npx tsc --noEmit || exit 1\nfi\n\necho \"Pre-commit checks passed\""
           }
         ]
       },

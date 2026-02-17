@@ -22,7 +22,24 @@
   },
   "home": {
     "title": "Superteam Academy",
-    "description": "Aprende desarrollo en Solana con cursos interactivos, credenciales on-chain y progresión gamificada."
+    "description": "Aprende desarrollo en Solana con cursos interactivos, credenciales on-chain y progresión gamificada.",
+    "heroHeadline": "Domina el Desarrollo en Solana",
+    "heroSubline": "Cursos interactivos, credenciales verificables on-chain y un camino gamificado para la próxima generación de desarrolladores Solana.",
+    "ctaStart": "Empieza a Aprender",
+    "ctaExplore": "Explorar Cursos",
+    "featureCredentials": "Credenciales On-Chain",
+    "featureCredentialsDesc": "Obtén credenciales verificables y soulbound almacenadas en Solana como prueba de tus habilidades.",
+    "featureInteractive": "Desafíos Interactivos",
+    "featureInteractiveDesc": "Escribe y prueba programas Solana reales directamente en el navegador con retroalimentación instantánea.",
+    "featureGamified": "Progresión Gamificada",
+    "featureGamifiedDesc": "Gana XP, mantén rachas, desbloquea logros y sube en la clasificación.",
+    "featureOpen": "Abierto y Componible",
+    "featureOpenDesc": "Construido en Solana con estándares abiertos. Tus credenciales son tuyas — portátiles y permanentes.",
+    "statsLearners": "Estudiantes",
+    "statsCourses": "Cursos",
+    "statsCredentials": "Credenciales Emitidas",
+    "footerBuiltBy": "Creado por",
+    "footerOnSolana": "en Solana"
   },
   "auth": {
     "welcomeBack": "Bienvenido de nuevo",
@@ -31,7 +48,9 @@
     "continueWithGitHub": "Continuar con GitHub",
     "connectWallet": "Conectar Billetera",
     "walletNote": "Conecta tu billetera Solana después de iniciar sesión para acceder a funciones on-chain.",
-    "authFailed": "Error de autenticación. Inténtalo de nuevo."
+    "authFailed": "Error de autenticación. Inténtalo de nuevo.",
+    "signInHeadline": "Tu viaje en Solana comienza aquí",
+    "signInSubline": "Únete a miles de desarrolladores aprendiendo a construir en la blockchain más rápida."
   },
   "language": {
     "label": "Idioma",

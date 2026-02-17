@@ -22,7 +22,24 @@
   },
   "home": {
     "title": "Superteam Academy",
-    "description": "Learn Solana development with interactive courses, on-chain credentials, and gamified progression."
+    "description": "Learn Solana development with interactive courses, on-chain credentials, and gamified progression.",
+    "heroHeadline": "Master Solana Development",
+    "heroSubline": "Interactive courses, verifiable on-chain credentials, and a gamified learning path built for the next generation of Solana developers.",
+    "ctaStart": "Start Learning",
+    "ctaExplore": "Explore Courses",
+    "featureCredentials": "On-Chain Credentials",
+    "featureCredentialsDesc": "Earn verifiable, soulbound NFT credentials stored on Solana as proof of your skills.",
+    "featureInteractive": "Interactive Challenges",
+    "featureInteractiveDesc": "Write and test real Solana programs directly in the browser with instant feedback.",
+    "featureGamified": "Gamified Progression",
+    "featureGamifiedDesc": "Earn XP, maintain streaks, unlock achievements, and climb the leaderboard.",
+    "featureOpen": "Open & Composable",
+    "featureOpenDesc": "Built on Solana with open standards. Your credentials are yours — portable and permanent.",
+    "statsLearners": "Learners",
+    "statsCourses": "Courses",
+    "statsCredentials": "Credentials Issued",
+    "footerBuiltBy": "Built by",
+    "footerOnSolana": "on Solana"
   },
   "auth": {
     "welcomeBack": "Welcome back",
@@ -31,7 +48,9 @@
     "continueWithGitHub": "Continue with GitHub",
     "connectWallet": "Connect Wallet",
     "walletNote": "Connect your Solana wallet after signing in to access on-chain features.",
-    "authFailed": "Authentication failed. Please try again."
+    "authFailed": "Authentication failed. Please try again.",
+    "signInHeadline": "Your Solana journey starts here",
+    "signInSubline": "Join thousands of developers learning to build on the fastest blockchain."
   },
   "language": {
     "label": "Language",
