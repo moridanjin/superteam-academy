@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   GoogleSignInButton,
   GitHubSignInButton,
@@ -18,6 +19,7 @@ import { Separator } from "@/components/ui/separator";
 function SignInForm() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
+  const t = useTranslations("auth");
 
   return (
     <Card className="w-full max-w-sm">
@@ -25,23 +27,20 @@ function SignInForm() {
         <div className="from-solana-purple to-solana-green mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br">
           <span className="text-lg font-bold text-white">S</span>
         </div>
-        <CardTitle className="text-xl">Welcome back</CardTitle>
-        <CardDescription>
-          Sign in to continue your learning journey
-        </CardDescription>
+        <CardTitle className="text-xl">{t("welcomeBack")}</CardTitle>
+        <CardDescription>{t("signInDescription")}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
         {error && (
           <p className="rounded-md bg-red-950/50 p-2 text-center text-sm text-red-400">
-            Authentication failed. Please try again.
+            {t("authFailed")}
           </p>
         )}
         <GoogleSignInButton />
         <GitHubSignInButton />
         <Separator className="my-1" />
         <p className="text-center text-xs text-neutral-500">
-          Connect your Solana wallet after signing in to access on-chain
-          features.
+          {t("walletNote")}
         </p>
       </CardContent>
     </Card>

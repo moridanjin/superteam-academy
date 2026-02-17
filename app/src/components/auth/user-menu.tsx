@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { signOut } from "@/lib/auth";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +19,7 @@ import { WalletConnectButton } from "./wallet-connect-button";
 export function UserMenu() {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
+  const t = useTranslations("nav");
 
   if (loading) {
     return (
@@ -28,7 +30,7 @@ export function UserMenu() {
   if (!user) {
     return (
       <Button variant="default" size="sm" asChild>
-        <a href="/auth/sign-in">Sign In</a>
+        <Link href="/auth/sign-in">{t("signIn")}</Link>
       </Button>
     );
   }
@@ -78,10 +80,10 @@ export function UserMenu() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => router.push("/dashboard")}>
-            Dashboard
+            {t("dashboard")}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push("/settings")}>
-            Settings
+            {t("settings")}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
@@ -91,7 +93,7 @@ export function UserMenu() {
               router.refresh();
             }}
           >
-            Sign Out
+            {t("signOut")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

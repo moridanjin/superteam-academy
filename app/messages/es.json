@@ -1,0 +1,42 @@
+{
+  "common": {
+    "appName": "Superteam Academy",
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "noResults": "No se encontraron resultados"
+  },
+  "nav": {
+    "courses": "Cursos",
+    "leaderboard": "Clasificación",
+    "dashboard": "Panel",
+    "settings": "Configuración",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión"
+  },
+  "home": {
+    "title": "Superteam Academy",
+    "description": "Aprende desarrollo en Solana con cursos interactivos, credenciales on-chain y progresión gamificada."
+  },
+  "auth": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "signInDescription": "Inicia sesión para continuar tu camino de aprendizaje",
+    "continueWithGoogle": "Continuar con Google",
+    "continueWithGitHub": "Continuar con GitHub",
+    "connectWallet": "Conectar Billetera",
+    "walletNote": "Conecta tu billetera Solana después de iniciar sesión para acceder a funciones on-chain.",
+    "authFailed": "Error de autenticación. Inténtalo de nuevo."
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "pt-br": "Português",
+    "es": "Español"
+  }
+}

@@ -1,17 +1,19 @@
 "use client";
 
+import { useCallback, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useAuth } from "@/hooks/use-auth";
 import { linkWallet, unlinkWallet } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
-import { useCallback, useEffect, useRef } from "react";
 
 export function WalletConnectButton() {
   const { publicKey, disconnect, connected } = useWallet();
   const { setVisible } = useWalletModal();
   const { user, profile } = useAuth();
   const hasLinked = useRef(false);
+  const t = useTranslations("auth");
 
   const handleLinkWallet = useCallback(async () => {
     if (!user || !publicKey || hasLinked.current) return;
@@ -59,7 +61,7 @@ export function WalletConnectButton() {
       className="gap-2"
       onClick={() => setVisible(true)}
     >
-      Connect Wallet
+      {t("connectWallet")}
     </Button>
   );
 }
