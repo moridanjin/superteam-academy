@@ -1,0 +1,152 @@
+{
+  "course": {
+    "title": "Solana Fundamentals",
+    "slug": "solana-fundamentals",
+    "description": "Master the foundations of Solana blockchain development. Learn about accounts, transactions, PDAs, tokens, and build your first on-chain program.",
+    "difficulty": "beginner",
+    "duration": 480,
+    "track": "core",
+    "xp_reward": 500
+  },
+  "modules": [
+    {
+      "title": "Introduction to Solana",
+      "order": 0,
+      "lessons": [
+        {
+          "title": "What is Solana?",
+          "type": "content",
+          "order": 0,
+          "xp_reward": 10,
+          "content": "# What is Solana?\n\nSolana is a high-performance blockchain platform designed for decentralized applications and crypto-currencies. It uses a unique combination of **Proof of History (PoH)** and **Proof of Stake (PoS)** to achieve high throughput.\n\n## Key Features\n\n- **400ms block times** — near-instant finality\n- **65,000+ TPS** — massive throughput capacity\n- **< $0.01 per transaction** — extremely low fees\n- **Growing ecosystem** — DeFi, NFTs, Gaming, DePIN\n\n## Architecture Overview\n\nSolana's architecture is fundamentally different from Ethereum:\n\n1. **Accounts Model** — All state is stored in accounts, not contract storage\n2. **Programs are stateless** — Logic is separated from data\n3. **Parallel execution** — Transactions that don't conflict run in parallel\n4. **Rent** — Accounts must maintain a minimum SOL balance\n\n## Why Build on Solana?\n\nSolana offers the best combination of speed, cost, and developer experience for building production applications. The ecosystem provides rich tooling, active developer communities, and strong grant programs."
+        },
+        {
+          "title": "Setting Up Your Development Environment",
+          "type": "content",
+          "order": 1,
+          "xp_reward": 15,
+          "content": "# Setting Up Your Dev Environment\n\n## Prerequisites\n\n- **Rust** (1.75+): `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`\n- **Solana CLI** (1.18+): `sh -c \"$(curl -sSfL https://release.anza.xyz/stable/install)\"`\n- **Node.js** (18+): Required for client-side tooling\n- **Anchor** (0.30+): `cargo install --git https://github.com/coral-xyz/anchor anchor-cli`\n\n## Verify Installation\n\n```bash\nsolana --version\nanchor --version\nrustc --version\n```\n\n## Configure for Devnet\n\n```bash\nsolana config set --url devnet\nsolana-keygen new  # Generate a dev wallet\nsolana airdrop 2   # Get devnet SOL\n```\n\n## Project Structure\n\nAnchor projects follow a standard structure:\n\n```\nmy-project/\n├── programs/     # Rust on-chain programs\n├── tests/        # TypeScript integration tests\n├── app/          # Frontend application\n├── Anchor.toml   # Anchor configuration\n└── Cargo.toml    # Rust workspace\n```"
+        },
+        {
+          "title": "Solana Accounts Deep Dive",
+          "type": "content",
+          "order": 2,
+          "xp_reward": 20,
+          "content": "# Solana Accounts\n\nEverything on Solana is an **account**. Accounts are the fundamental data storage primitive.\n\n## Account Structure\n\nEvery account has:\n\n| Field | Description |\n|-------|------------|\n| `lamports` | Balance in lamports (1 SOL = 1B lamports) |\n| `data` | Byte array storing arbitrary data |\n| `owner` | Program that controls this account |\n| `executable` | Whether this account contains a program |\n| `rent_epoch` | Next epoch rent is due |\n\n## Key Concepts\n\n### Ownership\n- Only the **owner program** can modify an account's `data` and debit `lamports`\n- The **System Program** owns all new accounts initially\n- Programs transfer ownership via CPI\n\n### Rent\n- Accounts must hold minimum SOL to be **rent-exempt**\n- Formula: `(128 + data.len()) * 6.96e-6 SOL`\n- Rent-exempt accounts persist forever\n\n### Account Types\n1. **Data accounts** — Store state (created by programs)\n2. **Program accounts** — Store executable code\n3. **Native accounts** — System Program, BPF Loader, etc.\n\n```rust\n#[account]\npub struct Counter {\n    pub count: u64,      // 8 bytes\n    pub authority: Pubkey, // 32 bytes\n}\n```"
+        }
+      ]
+    },
+    {
+      "title": "Transactions & Instructions",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Understanding Transactions",
+          "type": "content",
+          "order": 0,
+          "xp_reward": 15,
+          "content": "# Transactions on Solana\n\nA transaction is a signed message that contains one or more **instructions**.\n\n## Transaction Structure\n\n```\nTransaction\n├── Signatures[]     — Ed25519 signatures\n├── Message\n│   ├── Header       — # of signers, read-only accounts\n│   ├── Account Keys — All accounts referenced\n│   ├── Recent Blockhash — For deduplication\n│   └── Instructions[]   — What to execute\n```\n\n## Instructions\n\nEach instruction specifies:\n1. **Program ID** — Which program to invoke\n2. **Accounts** — Accounts the program will read/write\n3. **Data** — Serialized arguments\n\n## Transaction Lifecycle\n\n1. Client builds transaction with instructions\n2. Client signs with required keypairs\n3. Transaction submitted to RPC node\n4. Leader validates and executes\n5. Validators confirm (finality ~400ms)\n\n## Fees\n\n- Base fee: **5,000 lamports per signature** (~$0.0005)\n- Priority fees: Optional, for faster inclusion\n- Compute units: Max 200K CU per instruction, 1.4M per transaction"
+        },
+        {
+          "title": "Building Your First Transaction",
+          "type": "challenge",
+          "order": 1,
+          "xp_reward": 25,
+          "content": "# Challenge: Build a SOL Transfer\n\nCreate a transaction that transfers SOL from one account to another using the System Program.\n\n## Requirements\n\n1. Create a `TransactionInstruction` for `SystemProgram.transfer`\n2. Set the correct accounts (from, to)\n3. Specify the lamport amount\n4. Build and return the transaction",
+          "challenge": {
+            "prompt": "Complete the function to create a SOL transfer transaction.",
+            "starter_code": "import { Transaction, SystemProgram, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';\n\nexport function createTransferTransaction(\n  from: PublicKey,\n  to: PublicKey,\n  amountSol: number\n): Transaction {\n  // TODO: Create a transfer instruction and add it to a transaction\n}",
+            "test_cases": "const tx = createTransferTransaction(fromPubkey, toPubkey, 1.5);\nassert(tx.instructions.length === 1);\nassert(tx.instructions[0].programId.equals(SystemProgram.programId));",
+            "expected_output": "Transaction with 1 SystemProgram.transfer instruction transferring 1.5 SOL",
+            "hints": "Use SystemProgram.transfer({ fromPubkey, toPubkey, lamports }) to create the instruction.",
+            "solution": "import { Transaction, SystemProgram, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';\n\nexport function createTransferTransaction(\n  from: PublicKey,\n  to: PublicKey,\n  amountSol: number\n): Transaction {\n  const transaction = new Transaction().add(\n    SystemProgram.transfer({\n      fromPubkey: from,\n      toPubkey: to,\n      lamports: amountSol * LAMPORTS_PER_SOL,\n    })\n  );\n  return transaction;\n}"
+          }
+        },
+        {
+          "title": "Cross-Program Invocations (CPI)",
+          "type": "content",
+          "order": 2,
+          "xp_reward": 20,
+          "content": "# Cross-Program Invocations\n\nCPI allows one program to call another program's instructions. This is how programs compose on Solana.\n\n## How CPI Works\n\n```rust\n// Invoke another program\nsolana_program::program::invoke(\n    &instruction,    // The instruction to execute\n    &[account1, account2], // Accounts to pass\n)?;\n```\n\n## CPI with Signer Seeds (PDA signing)\n\n```rust\nsolana_program::program::invoke_signed(\n    &instruction,\n    &[pda_account, other_account],\n    &[&[b\"seed\", &[bump]]],  // Signer seeds\n)?;\n```\n\n## Key Rules\n\n1. **Privilege escalation** — CPI inherits signer/writable privileges\n2. **Depth limit** — Max 4 levels of CPI nesting\n3. **CU budget** — Shared across the entire transaction\n4. **Account validation** — Always verify CPI target program ID\n\n## Common CPI Targets\n\n- **System Program** — Create accounts, transfer SOL\n- **Token Program** — Mint, transfer, burn tokens\n- **Associated Token Program** — Create ATAs\n- **Metaplex** — NFT creation and management"
+        }
+      ]
+    },
+    {
+      "title": "Program Derived Addresses (PDAs)",
+      "order": 2,
+      "lessons": [
+        {
+          "title": "What are PDAs?",
+          "type": "content",
+          "order": 0,
+          "xp_reward": 20,
+          "content": "# Program Derived Addresses\n\nPDAs are deterministic addresses derived from a program ID and a set of seeds. They don't have private keys — only the program can sign for them.\n\n## Why PDAs?\n\n1. **Deterministic** — Same seeds always produce same address\n2. **Program-controlled** — Only the owning program can sign\n3. **No private key** — Can't be used as a wallet\n4. **State storage** — Map data to predictable addresses\n\n## How PDAs Work\n\n```rust\nlet (pda, bump) = Pubkey::find_program_address(\n    &[b\"user\", user_pubkey.as_ref()],\n    &program_id,\n);\n```\n\nThe `find_program_address` function:\n1. Hashes seeds + program_id + bump\n2. Checks if result is on the Ed25519 curve\n3. If yes, decrements bump and tries again\n4. Returns first off-curve address (the PDA) + bump\n\n## Common PDA Patterns\n\n| Pattern | Seeds | Use Case |\n|---------|-------|----------|\n| Singleton | `[\"config\"]` | Global config |\n| Per-user | `[\"profile\", user]` | User state |\n| Per-pair | `[\"vault\", mint_a, mint_b]` | AMM pools |\n| Indexed | `[\"ticket\", id.to_le_bytes()]` | Sequential items |"
+        },
+        {
+          "title": "Create a PDA Account",
+          "type": "challenge",
+          "order": 1,
+          "xp_reward": 30,
+          "content": "# Challenge: Derive a PDA\n\nDerive a PDA for a user profile account using the user's public key as a seed.",
+          "challenge": {
+            "prompt": "Complete the function to derive a PDA for a user profile.",
+            "starter_code": "import { PublicKey } from '@solana/web3.js';\n\nconst PROGRAM_ID = new PublicKey('YourProgramId11111111111111111111111111111');\n\nexport function deriveUserProfilePDA(\n  userPubkey: PublicKey\n): [PublicKey, number] {\n  // TODO: Derive PDA with seeds [\"profile\", userPubkey]\n}",
+            "test_cases": "const [pda, bump] = deriveUserProfilePDA(userPubkey);\nassert(PublicKey.isOnCurve(pda.toBuffer()) === false);\nassert(bump >= 0 && bump <= 255);",
+            "expected_output": "A tuple of [PublicKey (off-curve), bump (0-255)]",
+            "hints": "Use PublicKey.findProgramAddressSync with Buffer.from('profile') and the user's public key bytes.",
+            "solution": "import { PublicKey } from '@solana/web3.js';\n\nconst PROGRAM_ID = new PublicKey('YourProgramId11111111111111111111111111111');\n\nexport function deriveUserProfilePDA(\n  userPubkey: PublicKey\n): [PublicKey, number] {\n  return PublicKey.findProgramAddressSync(\n    [Buffer.from('profile'), userPubkey.toBuffer()],\n    PROGRAM_ID\n  );\n}"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tokens on Solana",
+      "order": 3,
+      "lessons": [
+        {
+          "title": "SPL Token Program",
+          "type": "content",
+          "order": 0,
+          "xp_reward": 15,
+          "content": "# SPL Token Program\n\nThe SPL Token Program is Solana's standard for fungible and non-fungible tokens.\n\n## Key Concepts\n\n### Mint Account\nDefines a token type: supply, decimals, mint authority, freeze authority.\n\n### Token Account\nHolds a balance of a specific token for a specific owner.\n\n### Associated Token Account (ATA)\nA deterministic token account derived from owner + mint. The standard way to hold tokens.\n\n```\nATA = findProgramAddress(\n  [owner, TOKEN_PROGRAM_ID, mint],\n  ASSOCIATED_TOKEN_PROGRAM_ID\n)\n```\n\n## Token-2022 Extensions\n\nToken-2022 adds powerful features:\n\n| Extension | Description |\n|-----------|------------|\n| **NonTransferable** | Soulbound tokens |\n| **PermanentDelegate** | Authority can always burn/transfer |\n| **TransferHook** | Custom logic on every transfer |\n| **MetadataPointer** | On-chain token metadata |\n| **ConfidentialTransfer** | Zero-knowledge transfers |\n\nSuperteam Academy uses Token-2022 with NonTransferable + PermanentDelegate for **soulbound XP tokens**."
+        },
+        {
+          "title": "Create and Mint Tokens",
+          "type": "challenge",
+          "order": 1,
+          "xp_reward": 30,
+          "content": "# Challenge: Mint SPL Tokens\n\nCreate a mint and mint tokens to a user's associated token account.",
+          "challenge": {
+            "prompt": "Complete the function to create a mint instruction and mint tokens.",
+            "starter_code": "import { PublicKey, Transaction } from '@solana/web3.js';\nimport { createMintToInstruction, getAssociatedTokenAddressSync } from '@solana/spl-token';\n\nexport function createMintTransaction(\n  mint: PublicKey,\n  authority: PublicKey,\n  recipient: PublicKey,\n  amount: number\n): Transaction {\n  // TODO: Get the ATA and create a mintTo instruction\n}",
+            "test_cases": "const tx = createMintTransaction(mint, authority, recipient, 100);\nassert(tx.instructions.length === 1);",
+            "expected_output": "Transaction with mintTo instruction for 100 tokens",
+            "hints": "Use getAssociatedTokenAddressSync to derive the ATA, then createMintToInstruction.",
+            "solution": "import { PublicKey, Transaction } from '@solana/web3.js';\nimport { createMintToInstruction, getAssociatedTokenAddressSync } from '@solana/spl-token';\n\nexport function createMintTransaction(\n  mint: PublicKey,\n  authority: PublicKey,\n  recipient: PublicKey,\n  amount: number\n): Transaction {\n  const ata = getAssociatedTokenAddressSync(mint, recipient);\n  return new Transaction().add(\n    createMintToInstruction(mint, ata, authority, amount)\n  );\n}"
+          }
+        },
+        {
+          "title": "Building Your First Anchor Program",
+          "type": "content",
+          "order": 2,
+          "xp_reward": 25,
+          "content": "# Your First Anchor Program\n\nAnchor is the most popular framework for Solana program development.\n\n## Program Structure\n\n```rust\nuse anchor_lang::prelude::*;\n\ndeclare_id!(\"YourProgramId\");\n\n#[program]\nmod my_program {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let counter = &mut ctx.accounts.counter;\n        counter.count = 0;\n        counter.authority = ctx.accounts.authority.key();\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Increment>) -> Result<()> {\n        let counter = &mut ctx.accounts.counter;\n        counter.count = counter.count.checked_add(1)\n            .ok_or(ErrorCode::Overflow)?;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(\n        init,\n        payer = authority,\n        space = 8 + Counter::INIT_SPACE\n    )]\n    pub counter: Account<'info, Counter>,\n    #[account(mut)]\n    pub authority: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Increment<'info> {\n    #[account(\n        mut,\n        has_one = authority\n    )]\n    pub counter: Account<'info, Counter>,\n    pub authority: Signer<'info>,\n}\n\n#[account]\n#[derive(InitSpace)]\npub struct Counter {\n    pub count: u64,\n    pub authority: Pubkey,\n}\n```\n\n## Key Anchor Features\n\n- **Account validation** via `#[derive(Accounts)]`\n- **Automatic (de)serialization** with Borsh\n- **PDA derivation** with `seeds` and `bump`\n- **Error handling** with custom error enums\n- **IDL generation** for client-side type safety"
+        },
+        {
+          "title": "Testing Solana Programs",
+          "type": "content",
+          "order": 3,
+          "xp_reward": 15,
+          "content": "# Testing Solana Programs\n\nTesting is critical for on-chain programs — bugs can mean lost funds.\n\n## Testing Layers\n\n### 1. Unit Tests (Rust)\nTest individual functions in isolation.\n\n```rust\n#[cfg(test)]\nmod tests {\n    use super::*;\n\n    #[test]\n    fn test_xp_calculation() {\n        assert_eq!(calculate_xp(5, 100), 150);\n    }\n}\n```\n\n### 2. Integration Tests (LiteSVM / Bankrun)\nTest full instruction execution in a local VM.\n\n```typescript\nimport { LiteSVM } from 'litesvm';\n\nconst svm = new LiteSVM();\nconst result = await svm.simulateTransaction(tx);\nassert(result.err === null);\n```\n\n### 3. Integration Tests (Anchor)\nTest with Anchor's test framework.\n\n```typescript\nit('initializes counter', async () => {\n  await program.methods\n    .initialize()\n    .accounts({ counter, authority })\n    .rpc();\n\n  const account = await program.account.counter.fetch(counter);\n  expect(account.count.toNumber()).to.equal(0);\n});\n```\n\n### 4. Fuzz Testing (Trident)\nAutomatically discover edge cases.\n\n```bash\ntrident fuzz run --duration 600\n```\n\n## Best Practices\n\n- Test happy paths AND error cases\n- Test boundary conditions (max values, zero, overflow)\n- Test access control (unauthorized signers)\n- Use devnet for integration testing before mainnet"
+        },
+        {
+          "title": "Next Steps",
+          "type": "content",
+          "order": 4,
+          "xp_reward": 10,
+          "content": "# Next Steps\n\nCongratulations on completing Solana Fundamentals! Here's where to go next:\n\n## Recommended Learning Paths\n\n### DeFi Developer\n- AMM design patterns\n- Lending protocols\n- Oracle integration (Pyth, Switchboard)\n- Token-2022 advanced features\n\n### NFT Developer\n- Metaplex standards (Core, Bubblegum)\n- Compressed NFTs\n- Marketplace development\n- Royalty enforcement\n\n### Full-Stack Solana\n- Next.js + Wallet Adapter\n- Anchor client generation\n- Transaction building patterns\n- Real-time subscriptions (WebSocket)\n\n## Resources\n\n- [Solana Cookbook](https://solanacookbook.com)\n- [Anchor Book](https://book.anchor-lang.com)\n- [Solana Playground](https://beta.solpg.io)\n- [Superteam Academy](https://academy.superteam.fun) — You're here!\n\n## Keep Building!\n\nThe best way to learn is to build. Pick a project and start coding. The Superteam community is here to help."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "challenges",
+  "info": {
+    "singularName": "challenge",
+    "pluralName": "challenges",
+    "displayName": "Challenge",
+    "description": "Code challenge with test cases and solution"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "prompt": {
+      "type": "text",
+      "required": true
+    },
+    "starter_code": {
+      "type": "text",
+      "required": true
+    },
+    "test_cases": {
+      "type": "text",
+      "required": true
+    },
+    "expected_output": {
+      "type": "text",
+      "required": true
+    },
+    "hints": {
+      "type": "text"
+    },
+    "solution": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
