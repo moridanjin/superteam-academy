@@ -10,6 +10,7 @@ Superteam Academy is a **decentralized learning platform on Solana** with gamifi
 **Architecture Reference**: `docs/ARCHITECTURE.md` (account maps, data flows, CU budgets)
 **Build Order**: `docs/IMPLEMENTATION_ORDER.md` (9-phase incremental plan)
 **Deferred Features**: `docs/FUTURE_IMPROVEMENTS.md` (V2/V3 backlog)
+**Frontend PRD**: `tasks/prd-superteam-lms.md` (30 user stories, 10 phases)
 
 ## Communication Style
 
@@ -56,10 +57,15 @@ superteam-academy/
 ├── tests/
 │   ├── rust/                    ← Mollusk/LiteSVM unit tests
 │   └── ts/                      ← Anchor TypeScript integration tests
-├── app/                         ← Next.js frontend (future)
+├── app/                         ← Next.js frontend (active)
 │   ├── src/
+│   │   ├── app/                 ← App Router pages (layout.tsx, page.tsx, globals.css)
+│   │   ├── components/ui/       ← shadcn/ui components (button, card, badge)
+│   │   └── lib/utils.ts         ← Tailwind merge + clsx utility
+│   ├── components.json          ← shadcn/ui config (new-york style, neutral base)
+│   ├── .prettierrc              ← Prettier config (tailwindcss plugin)
 │   ├── package.json
-│   └── tsconfig.json
+│   └── tsconfig.json            ← strict: true, noUncheckedIndexedAccess: true
 ├── sdk/                         ← TypeScript SDK for program interaction (future)
 ├── Anchor.toml
 ├── Cargo.toml                   ← Workspace root
@@ -81,7 +87,7 @@ superteam-academy/
 | **Credentials** | Light SDK (ZK Compression) — compressed PDAs, Photon indexer |
 | **Testing** | Mollusk, LiteSVM, Trident (fuzz) |
 | **Client** | TypeScript, @coral-xyz/anchor, @solana/web3.js |
-| **Frontend** | Next.js 14+, React, Tailwind CSS |
+| **Frontend** | Next.js 16 (App Router), React 19, Tailwind CSS 4, shadcn/ui |
 | **RPC** | Helius (DAS API + Photon for ZK Compression) |
 | **Content** | Arweave (immutable course content) |
 | **Multisig** | Squads (platform authority) |
@@ -145,15 +151,94 @@ Summon specialized agents for complex tasks:
 | **solana-guide** | Learning, tutorials, concept explanations |
 | **solana-researcher** | Ecosystem research, comparing implementations |
 
+## Frontend Progress (LMS dApp)
+
+**PRD**: `tasks/prd-superteam-lms.md` | **Branch pattern**: `feat/<scope>-<DD-MM-YYYY>`
+
+| Phase | User Story | Status |
+|-------|-----------|--------|
+| 1 - Scaffolding | US-001: Initialize Next.js App | Done |
+| 1 - Scaffolding | US-002: Supabase Schema & Client | Done |
+| 1 - Scaffolding | US-003: Auth (Wallet + Supabase Auth) | Done |
+| 1 - Scaffolding | US-004: i18n (PT-BR, ES, EN) | Not started |
+| 1 - Scaffolding | US-005: Strapi CMS | Not started |
+| 1 - Scaffolding | US-006: Service Interface Layer | Not started |
+| 2 - Navigation | US-007: App Shell & Navigation | Not started |
+| 2 - Navigation | US-008: Landing Page | Not started |
+| 3 - Courses | US-009: Course Catalog | Not started |
+| 3 - Courses | US-010: Course Detail Page | Not started |
+| 3 - Courses | US-011: Enrollment Flow | Not started |
+| 4 - Lessons | US-012: Lesson View | Not started |
+| 4 - Lessons | US-013: Solana Playground | Not started |
+| 4 - Lessons | US-014: Code Challenge Interface | Not started |
+| 5 - Gamification | US-015: XP & Leveling | Not started |
+| 5 - Gamification | US-016: Streak System | Not started |
+| 5 - Gamification | US-017: Achievements/Badges | Not started |
+| 6 - Dashboard | US-018: User Dashboard | Not started |
+| 6 - Dashboard | US-019: User Profile | Not started |
+| 7 - Leaderboard | US-020: Leaderboard | Not started |
+| 7 - Settings | US-021: Settings Page | Not started |
+| 7 - Certs | US-022: Certificate View | Not started |
+| 8 - Polish | US-023: Analytics & Monitoring | Not started |
+| 8 - Polish | US-024: Performance Optimization | Not started |
+| 8 - Polish | US-025: Documentation | Not started |
+| 9 - Bonus | US-026: Admin Dashboard | Not started |
+| 9 - Bonus | US-027: E2E Tests | Not started |
+| 9 - Bonus | US-028: Community Forum | Not started |
+| 9 - Bonus | US-029: PWA Support | Not started |
+| 10 - Submit | US-030: Submission Deliverables | Not started |
+
+### Frontend Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript (strict, noUncheckedIndexedAccess, no `any`) |
+| Styling | Tailwind CSS 4 with Solana brand tokens |
+| Components | shadcn/ui (new-york) + Radix primitives |
+| Fonts | Inter (body) + JetBrains Mono (code) via next/font |
+| Auth | Solana Wallet Adapter + NextAuth.js (Google + GitHub) |
+| Database | Supabase (Postgres + RLS + Realtime + Storage) |
+| CMS | Strapi (REST API) |
+| i18n | next-intl (PT-BR, ES, EN) |
+| Theme | Dark mode primary, Solana gradient palette |
+
+### Frontend Commands
+
+```bash
+cd app/
+npm run dev          # Start dev server (localhost:3000)
+npm run build        # Production build
+npm run typecheck    # TypeScript check (tsc --noEmit)
+npm run lint         # ESLint
+npm run format       # Prettier format
+npm run format:check # Prettier check
+```
+
+### Tailwind Custom Colors
+
+```
+solana-purple: #9945ff    solana-green: #14f195
+solana-blue:   #00d1ff    solana-pink:  #f946ff
+superteam:     #6366f1    neutral-50..950 scale
+```
+
 ## Mandatory Workflow
 
-Every program change:
+### On-Chain Program Changes
 1. **Build**: `anchor build`
 2. **Format**: `cargo fmt`
 3. **Lint**: `cargo clippy -- -W clippy::all`
 4. **Test**: Unit + integration + fuzz
 5. **Quality**: Remove AI slop (see below)
 6. **Deploy**: Devnet first, mainnet with explicit confirmation
+
+### Frontend Changes
+1. **Typecheck**: `npm run typecheck`
+2. **Lint**: `npm run lint`
+3. **Format**: `npm run format`
+4. **Build**: `npm run build`
+5. **Quality**: Remove AI slop (see below)
 
 ## Security Principles
 
