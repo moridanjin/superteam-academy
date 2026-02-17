@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { Navbar } from "@/components/navbar";
+import { AppShell } from "@/components/app-shell";
 
 function HeroSection() {
   const t = useTranslations("home");
@@ -198,25 +198,6 @@ function FeaturesSection() {
   );
 }
 
-function Footer() {
-  const t = useTranslations("home");
-
-  return (
-    <footer className="border-t border-white/5 py-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-center">
-        <div className="flex items-center gap-2">
-          <div className="from-solana-purple to-solana-green flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br">
-            <span className="text-[10px] font-bold text-white">S</span>
-          </div>
-          <span className="text-xs text-neutral-600">
-            {t("footerBuiltBy")} Superteam {t("footerOnSolana")}
-          </span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 export default function Home({
   params,
 }: {
@@ -225,14 +206,10 @@ export default function Home({
   params.then(({ locale }) => setRequestLocale(locale));
 
   return (
-    <div className="flex min-h-screen flex-col bg-neutral-950">
-      <Navbar />
-      <main className="flex-1">
-        <HeroSection />
-        <StatsSection />
-        <FeaturesSection />
-      </main>
-      <Footer />
-    </div>
+    <AppShell>
+      <HeroSection />
+      <StatsSection />
+      <FeaturesSection />
+    </AppShell>
   );
 }

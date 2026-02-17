@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useRef, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import { createClient } from "@/lib/supabase/client";
 import type { LearningPlatformServices } from "./types";
 import {
@@ -29,15 +29,12 @@ function createSupabaseServices(): LearningPlatformServices {
 }
 
 export function ServicesProvider({ children }: { children: ReactNode }) {
-  // Lazy initialization — avoids calling createClient() during SSG
-  const ref = useRef<LearningPlatformServices | null>(null);
-
-  if (!ref.current && typeof window !== "undefined") {
-    ref.current = createSupabaseServices();
-  }
+  const [services] = useState<LearningPlatformServices | null>(() =>
+    typeof window !== "undefined" ? createSupabaseServices() : null
+  );
 
   return (
-    <ServicesContext.Provider value={ref.current}>
+    <ServicesContext.Provider value={services}>
       {children}
     </ServicesContext.Provider>
   );

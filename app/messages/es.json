@@ -52,6 +52,21 @@
     "signInHeadline": "Tu viaje en Solana comienza aquí",
     "signInSubline": "Únete a miles de desarrolladores aprendiendo a construir en la blockchain más rápida."
   },
+  "footer": {
+    "tagline": "Aprende desarrollo en Solana con cursos interactivos y obtén credenciales verificables on-chain.",
+    "platform": "Plataforma",
+    "courses": "Cursos",
+    "leaderboard": "Clasificación",
+    "dashboard": "Panel",
+    "resources": "Recursos",
+    "solanaDocs": "Docs Solana",
+    "stayUpdated": "Mantente Informado",
+    "newsletterDesc": "Recibe notificaciones sobre nuevos cursos y funcionalidades.",
+    "emailPlaceholder": "tu@email.com",
+    "subscribe": "Suscribir",
+    "rights": "Todos los derechos reservados.",
+    "builtOn": "Construido en"
+  },
   "language": {
     "label": "Idioma",
     "en": "English",
