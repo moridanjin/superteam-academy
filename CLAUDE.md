@@ -162,7 +162,7 @@ Summon specialized agents for complex tasks:
 | 1 - Scaffolding | US-003: Auth (Wallet + Supabase Auth) | Done |
 | 1 - Scaffolding | US-004: i18n (PT-BR, ES, EN) | Done |
 | 1 - Scaffolding | US-005: Strapi CMS | Done |
-| 1 - Scaffolding | US-006: Service Interface Layer | Not started |
+| 1 - Scaffolding | US-006: Service Interface Layer | Done |
 | 2 - Navigation | US-007: App Shell & Navigation | Not started |
 | 2 - Navigation | US-008: Landing Page | Not started |
 | 3 - Courses | US-009: Course Catalog | Not started |
