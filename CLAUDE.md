@@ -165,9 +165,9 @@ Summon specialized agents for complex tasks:
 | 1 - Scaffolding | US-006: Service Interface Layer | Done |
 | 2 - Navigation | US-007: App Shell & Navigation | Done |
 | 2 - Navigation | US-008: Landing Page | Done |
-| 3 - Courses | US-009: Course Catalog | Not started |
-| 3 - Courses | US-010: Course Detail Page | Not started |
-| 3 - Courses | US-011: Enrollment Flow | Not started |
+| 3 - Courses | US-009: Course Catalog | Done |
+| 3 - Courses | US-010: Course Detail Page | Done |
+| 3 - Courses | US-011: Enrollment Flow | Done |
 | 4 - Lessons | US-012: Lesson View | Not started |
 | 4 - Lessons | US-013: Solana Playground | Not started |
 | 4 - Lessons | US-014: Code Challenge Interface | Not started |

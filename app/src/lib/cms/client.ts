@@ -11,9 +11,11 @@ import type {
   Lesson,
   Challenge,
 } from "./types";
+import { MOCK_COURSES } from "./mock-data";
 
 const STRAPI_URL = process.env.STRAPI_URL ?? "http://localhost:1337";
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
+const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK_DATA === "true";
 
 async function fetchStrapi<T>(
   path: string,
@@ -103,30 +105,45 @@ function transformCourse(entity: StrapiEntity<CmsCourse>): Course {
 // ── Public API ──
 
 export async function getCourses(): Promise<Course[]> {
-  const res = await fetchStrapi<StrapiResponse<CmsCourse>>("/courses", {
-    "populate[modules][populate][lessons][populate]": "challenge",
-    publicationState: "live",
-    sort: "title:asc",
-  });
-  return res.data.map(transformCourse);
+  if (USE_MOCK) return MOCK_COURSES;
+  try {
+    const res = await fetchStrapi<StrapiResponse<CmsCourse>>("/courses", {
+      "populate[modules][populate][lessons][populate]": "challenge",
+      publicationState: "live",
+      sort: "title:asc",
+    });
+    return res.data.map(transformCourse);
+  } catch {
+    return MOCK_COURSES;
+  }
 }
 
 export async function getCourseBySlug(slug: string): Promise<Course | null> {
-  const res = await fetchStrapi<StrapiResponse<CmsCourse>>("/courses", {
-    "filters[slug][$eq]": slug,
-    "populate[modules][populate][lessons][populate]": "challenge",
-    publicationState: "live",
-  });
-  const entity = res.data[0];
-  return entity ? transformCourse(entity) : null;
+  if (USE_MOCK) return MOCK_COURSES.find((c) => c.slug === slug) ?? null;
+  try {
+    const res = await fetchStrapi<StrapiResponse<CmsCourse>>("/courses", {
+      "filters[slug][$eq]": slug,
+      "populate[modules][populate][lessons][populate]": "challenge",
+      publicationState: "live",
+    });
+    const entity = res.data[0];
+    return entity ? transformCourse(entity) : null;
+  } catch {
+    return MOCK_COURSES.find((c) => c.slug === slug) ?? null;
+  }
 }
 
 export async function getCoursesSlugs(): Promise<string[]> {
-  const res = await fetchStrapi<StrapiResponse<CmsCourse>>("/courses", {
-    "fields[0]": "slug",
-    publicationState: "live",
-  });
-  return res.data.map((e) => e.attributes.slug);
+  if (USE_MOCK) return MOCK_COURSES.map((c) => c.slug);
+  try {
+    const res = await fetchStrapi<StrapiResponse<CmsCourse>>("/courses", {
+      "fields[0]": "slug",
+      publicationState: "live",
+    });
+    return res.data.map((e) => e.attributes.slug);
+  } catch {
+    return MOCK_COURSES.map((c) => c.slug);
+  }
 }
 
 export async function getLesson(id: number): Promise<Lesson | null> {
