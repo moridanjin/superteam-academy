@@ -13,6 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { GamificationIndicator } from "@/components/gamification/gamification-indicator";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -177,6 +178,9 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <div className="hidden md:block">
             <LanguageSwitcher />
+          </div>
+          <div className="hidden md:block">
+            <GamificationIndicator />
           </div>
           <UserMenu />
         </div>

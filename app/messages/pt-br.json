@@ -215,6 +215,168 @@
     "completeChallenge": "Complete o desafio para marcar como concluída.",
     "completedCount": "{completed} de {total} concluídas"
   },
+  "gamification": {
+    "level": "Nv.{level}",
+    "totalXp": "{xp} XP",
+    "xpProgress": "{current}/{required} XP",
+    "xpToNextLevel": "{xp} XP para o próximo nível",
+    "xpSource": {
+      "lesson_completion": "Aula concluída",
+      "course_completion": "Curso concluído",
+      "streak_bonus": "Bônus de sequência",
+      "achievement": "Conquista desbloqueada",
+      "referral": "Bônus de indicação"
+    },
+    "streak": "Sequência",
+    "streakDays": "Sequência de {count} dias",
+    "longestStreak": "Maior: {count} dias",
+    "streakFreezes": "{count} congelamentos",
+    "streakActive": "Sequência ativa",
+    "streakInactive": "Sem sequência ativa",
+    "streakMilestone7": "Sequência de 7 dias",
+    "streakMilestone30": "Sequência de 30 dias",
+    "streakMilestone100": "Sequência de 100 dias",
+    "streakCalendarNoActivity": "Sem atividade",
+    "streakCalendarActivity": "Ativo",
+    "achievementsTitle": "Conquistas",
+    "achievementsUnlocked": "{count} desbloqueadas",
+    "achievementsLocked": "Bloqueada",
+    "achievementsUnlockedAt": "Desbloqueada {date}",
+    "categoryProgress": "Progresso",
+    "categoryStreaks": "Sequências",
+    "categorySkills": "Habilidades",
+    "categoryCommunity": "Comunidade",
+    "categorySpecial": "Especial",
+    "categoryAll": "Todas",
+    "timeAgo": {
+      "justNow": "Agora mesmo",
+      "minutesAgo": "{count}min atrás",
+      "hoursAgo": "{count}h atrás",
+      "daysAgo": "{count}d atrás"
+    },
+    "achievements": {
+      "first_steps": {
+        "name": "Primeiros Passos",
+        "description": "Complete sua primeira aula"
+      },
+      "five_lessons": {
+        "name": "Começando",
+        "description": "Complete 5 aulas"
+      },
+      "ten_lessons": {
+        "name": "Aluno Dedicado",
+        "description": "Complete 10 aulas"
+      },
+      "twenty_five_lessons": {
+        "name": "Buscador de Conhecimento",
+        "description": "Complete 25 aulas"
+      },
+      "fifty_lessons": {
+        "name": "Meio Século",
+        "description": "Complete 50 aulas"
+      },
+      "hundred_lessons": {
+        "name": "Centurião",
+        "description": "Complete 100 aulas"
+      },
+      "first_course": {
+        "name": "Curso Concluído",
+        "description": "Complete seu primeiro curso"
+      },
+      "five_courses": {
+        "name": "Multi-Trilha",
+        "description": "Complete 5 cursos"
+      },
+      "ten_courses": {
+        "name": "Estudioso",
+        "description": "Complete 10 cursos"
+      },
+      "speed_runner": {
+        "name": "Velocista",
+        "description": "Complete um curso em menos de 24 horas"
+      },
+      "week_warrior": {
+        "name": "Guerreiro Semanal",
+        "description": "Mantenha uma sequência de 7 dias"
+      },
+      "two_week_streak": {
+        "name": "Foco Quinzenal",
+        "description": "Mantenha uma sequência de 14 dias"
+      },
+      "monthly_master": {
+        "name": "Mestre Mensal",
+        "description": "Mantenha uma sequência de 30 dias"
+      },
+      "two_month_streak": {
+        "name": "Vontade de Ferro",
+        "description": "Mantenha uma sequência de 60 dias"
+      },
+      "consistency_king": {
+        "name": "Rei da Consistência",
+        "description": "Mantenha uma sequência de 100 dias"
+      },
+      "streak_freeze_saved": {
+        "name": "Salvo pelo Gelo",
+        "description": "Use um congelamento para salvar sua sequência"
+      },
+      "rust_rookie": {
+        "name": "Novato em Rust",
+        "description": "Complete uma aula de fundamentos de Rust"
+      },
+      "anchor_apprentice": {
+        "name": "Aprendiz Anchor",
+        "description": "Complete um curso básico de Anchor"
+      },
+      "anchor_expert": {
+        "name": "Expert Anchor",
+        "description": "Complete todos os cursos de Anchor"
+      },
+      "frontend_builder": {
+        "name": "Construtor Frontend",
+        "description": "Complete uma aula de integração frontend"
+      },
+      "defi_starter": {
+        "name": "Iniciante DeFi",
+        "description": "Complete uma aula de fundamentos DeFi"
+      },
+      "defi_expert": {
+        "name": "Expert DeFi",
+        "description": "Complete todos os cursos de DeFi"
+      },
+      "full_stack_starter": {
+        "name": "Iniciante Full Stack",
+        "description": "Complete aulas em trilhas de programa e frontend"
+      },
+      "full_stack_solana": {
+        "name": "Full Stack Solana",
+        "description": "Complete a trilha Full Stack Solana"
+      },
+      "helper": {
+        "name": "Mão Amiga",
+        "description": "Ajude outro aprendiz na comunidade"
+      },
+      "first_comment": {
+        "name": "Primeiro Comentário",
+        "description": "Deixe seu primeiro comentário em uma aula"
+      },
+      "bug_hunter": {
+        "name": "Caçador de Bugs",
+        "description": "Reporte um bug que foi corrigido"
+      },
+      "early_adopter": {
+        "name": "Pioneiro",
+        "description": "Entre durante o beta da plataforma"
+      },
+      "perfect_score": {
+        "name": "Nota Perfeita",
+        "description": "Complete um curso com 100% em todos os desafios"
+      },
+      "completionist": {
+        "name": "Completista",
+        "description": "Desbloqueie todas as outras conquistas"
+      }
+    }
+  },
   "language": {
     "label": "Idioma",
     "en": "English",

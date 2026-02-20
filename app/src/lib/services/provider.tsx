@@ -49,3 +49,7 @@ export function useServices(): LearningPlatformServices {
   }
   return ctx;
 }
+
+export function useServicesMaybe(): LearningPlatformServices | null {
+  return useContext(ServicesContext);
+}

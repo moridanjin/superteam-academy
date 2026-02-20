@@ -18,4 +18,4 @@ export type {
   LearningPlatformServices,
 } from "./types";
 
-export { ServicesProvider, useServices } from "./provider";
+export { ServicesProvider, useServices, useServicesMaybe } from "./provider";

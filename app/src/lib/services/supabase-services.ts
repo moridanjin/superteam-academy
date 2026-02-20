@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database, Tables } from "@/lib/supabase/database.types";
+import { xpForLevel, levelFromXp } from "@/lib/gamification";
 import type {
   ProgressService,
   XPService,
@@ -23,19 +24,6 @@ import type {
 
 type Enrollment = Tables<"enrollments">;
 type Streak = Tables<"streaks">;
-
-/** XP required to reach a given level: 100 * level * (level + 1) / 2 */
-function xpForLevel(level: number): number {
-  return 100 * level * ((level + 1) / 2);
-}
-
-function levelFromXp(totalXp: number): number {
-  let level = 0;
-  while (xpForLevel(level + 1) <= totalXp) {
-    level++;
-  }
-  return level;
-}
 
 function todayUTC(): string {
   return new Date().toISOString().split("T")[0]!;
@@ -386,6 +374,22 @@ export class SupabaseStreakService implements StreakService {
       lastActivityDate: today,
       freezeCount: existing.freeze_count,
     };
+  }
+
+  async getActivityDates(userId: string, since: string): Promise<string[]> {
+    const { data } = await this.db
+      .from("xp_events")
+      .select("created_at")
+      .eq("user_id", userId)
+      .gte("created_at", `${since}T00:00:00Z`)
+      .order("created_at", { ascending: true });
+
+    if (!data?.length) return [];
+
+    const uniqueDates = new Set(
+      data.map((row) => (row as Tables<"xp_events">).created_at.split("T")[0]!)
+    );
+    return [...uniqueDates];
   }
 }
 

@@ -110,6 +110,9 @@ export interface StreakService {
 
   /** Record activity to update streak */
   recordActivity(userId: string): Promise<StreakInfo>;
+
+  /** Get distinct activity dates since a given date (YYYY-MM-DD) */
+  getActivityDates(userId: string, since: string): Promise<string[]>;
 }
 
 export interface LeaderboardService {
