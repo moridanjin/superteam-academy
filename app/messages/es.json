@@ -173,6 +173,23 @@
     "unenrollSuccess": "Inscripción cancelada exitosamente.",
     "signInToEnroll": "Inicia sesión para inscribirte"
   },
+  "lesson": {
+    "backToCourse": "Volver al Curso",
+    "lessonProgress": "Lección {current} de {total}",
+    "markComplete": "Marcar como Completada",
+    "completed": "Completada",
+    "nextLesson": "Siguiente Lección",
+    "prevLesson": "Lección Anterior",
+    "hints": "Pistas",
+    "hintLabel": "Pista {number}",
+    "moduleOverview": "Contenido del Curso",
+    "signInToTrack": "Inicia sesión para seguir tu progreso",
+    "xpEarned": "+{xp} XP ganado!",
+    "contentComingSoon": "Contenido de la lección próximamente.",
+    "challengePlaceholder": "Editor de código próximamente",
+    "courseProgress": "Progreso del Curso",
+    "completedCount": "{completed} de {total} completadas"
+  },
   "language": {
     "label": "Idioma",
     "en": "English",

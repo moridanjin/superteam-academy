@@ -173,6 +173,23 @@
     "unenrollSuccess": "Matrícula cancelada com sucesso.",
     "signInToEnroll": "Entre para se matricular"
   },
+  "lesson": {
+    "backToCourse": "Voltar ao Curso",
+    "lessonProgress": "Aula {current} de {total}",
+    "markComplete": "Marcar como Concluída",
+    "completed": "Concluída",
+    "nextLesson": "Próxima Aula",
+    "prevLesson": "Aula Anterior",
+    "hints": "Dicas",
+    "hintLabel": "Dica {number}",
+    "moduleOverview": "Conteúdo do Curso",
+    "signInToTrack": "Entre para acompanhar seu progresso",
+    "xpEarned": "+{xp} XP ganho!",
+    "contentComingSoon": "Conteúdo da aula em breve.",
+    "challengePlaceholder": "Editor de código em breve",
+    "courseProgress": "Progresso do Curso",
+    "completedCount": "{completed} de {total} concluídas"
+  },
   "language": {
     "label": "Idioma",
     "en": "English",

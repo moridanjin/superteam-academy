@@ -487,7 +487,7 @@ export default async function CourseDetailPage({
           <WhatYoullLearn course={course} />
 
           <FadeIn delay={0.1}>
-            <CourseModules modules={course.modules} />
+            <CourseModules modules={course.modules} courseSlug={course.slug} />
           </FadeIn>
 
           <Prerequisites />

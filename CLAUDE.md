@@ -168,7 +168,7 @@ Summon specialized agents for complex tasks:
 | 3 - Courses | US-009: Course Catalog | Done |
 | 3 - Courses | US-010: Course Detail Page | Done |
 | 3 - Courses | US-011: Enrollment Flow | Done |
-| 4 - Lessons | US-012: Lesson View | Not started |
+| 4 - Lessons | US-012: Lesson View | Done |
 | 4 - Lessons | US-013: Solana Playground | Not started |
 | 4 - Lessons | US-014: Code Challenge Interface | Not started |
 | 5 - Gamification | US-015: XP & Leveling | Not started |

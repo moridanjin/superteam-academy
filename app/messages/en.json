@@ -173,6 +173,23 @@
     "unenrollSuccess": "Successfully unenrolled.",
     "signInToEnroll": "Sign in to enroll"
   },
+  "lesson": {
+    "backToCourse": "Back to Course",
+    "lessonProgress": "Lesson {current} of {total}",
+    "markComplete": "Mark as Complete",
+    "completed": "Completed",
+    "nextLesson": "Next Lesson",
+    "prevLesson": "Previous Lesson",
+    "hints": "Hints",
+    "hintLabel": "Hint {number}",
+    "moduleOverview": "Course Content",
+    "signInToTrack": "Sign in to track progress",
+    "xpEarned": "+{xp} XP earned!",
+    "contentComingSoon": "Lesson content coming soon.",
+    "challengePlaceholder": "Code editor coming soon",
+    "courseProgress": "Course Progress",
+    "completedCount": "{completed} of {total} completed"
+  },
   "language": {
     "label": "Language",
     "en": "English",
