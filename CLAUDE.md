@@ -174,8 +174,8 @@ Summon specialized agents for complex tasks:
 | 5 - Gamification | US-015: XP & Leveling | Done |
 | 5 - Gamification | US-016: Streak System | Done |
 | 5 - Gamification | US-017: Achievements/Badges | Done |
-| 6 - Dashboard | US-018: User Dashboard | Not started |
-| 6 - Dashboard | US-019: User Profile | Not started |
+| 6 - Dashboard | US-018: User Dashboard | Done |
+| 6 - Dashboard | US-019: User Profile | Done |
 | 7 - Leaderboard | US-020: Leaderboard | Not started |
 | 7 - Settings | US-021: Settings Page | Not started |
 | 7 - Certs | US-022: Certificate View | Not started |

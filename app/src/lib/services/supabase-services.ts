@@ -37,7 +37,7 @@ export class SupabaseProgressService implements ProgressService {
   async getProgress(userId: string): Promise<CourseProgress[]> {
     const { data, error } = await this.db
       .from("enrollments")
-      .select("*, courses(title)")
+      .select("*, courses(title, slug)")
       .eq("user_id", userId)
       .order("enrolled_at", { ascending: false });
 
@@ -46,10 +46,11 @@ export class SupabaseProgressService implements ProgressService {
 
     return data.map((row) => {
       const e = row as unknown as Enrollment & {
-        courses: { title: string } | null;
+        courses: { title: string; slug: string } | null;
       };
       return {
         courseId: e.course_id,
+        courseSlug: e.courses?.slug ?? "",
         courseTitle: e.courses?.title ?? "",
         progressPct: e.progress_pct,
         completedLessons: 0,
@@ -67,7 +68,7 @@ export class SupabaseProgressService implements ProgressService {
   ): Promise<CourseProgress | null> {
     const { data, error } = await this.db
       .from("enrollments")
-      .select("*, courses(title)")
+      .select("*, courses(title, slug)")
       .eq("user_id", userId)
       .eq("course_id", courseId)
       .single();
@@ -77,7 +78,7 @@ export class SupabaseProgressService implements ProgressService {
     if (!data) return null;
 
     const e = data as unknown as Enrollment & {
-      courses: { title: string } | null;
+      courses: { title: string; slug: string } | null;
     };
 
     const { count: completedCount } = await this.db
@@ -95,6 +96,7 @@ export class SupabaseProgressService implements ProgressService {
 
     return {
       courseId: e.course_id,
+      courseSlug: e.courses?.slug ?? "",
       courseTitle: e.courses?.title ?? "",
       progressPct: e.progress_pct,
       completedLessons: completedCount ?? 0,

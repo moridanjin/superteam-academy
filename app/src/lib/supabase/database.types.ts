@@ -13,6 +13,7 @@ export type Database = {
         Row: {
           id: string;
           display_name: string | null;
+          bio: string | null;
           avatar_url: string | null;
           wallet_address: string | null;
           locale: "en" | "pt-br" | "es";
@@ -24,6 +25,7 @@ export type Database = {
         Insert: {
           id: string;
           display_name?: string | null;
+          bio?: string | null;
           avatar_url?: string | null;
           wallet_address?: string | null;
           locale?: "en" | "pt-br" | "es";
@@ -35,6 +37,7 @@ export type Database = {
         Update: {
           id?: string;
           display_name?: string | null;
+          bio?: string | null;
           avatar_url?: string | null;
           wallet_address?: string | null;
           locale?: "en" | "pt-br" | "es";

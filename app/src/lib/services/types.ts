@@ -4,6 +4,7 @@ import type { Enums } from "@/lib/supabase/database.types";
 
 export type CourseProgress = {
   courseId: string;
+  courseSlug: string;
   courseTitle: string;
   progressPct: number;
   completedLessons: number;

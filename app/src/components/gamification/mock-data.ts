@@ -1,4 +1,11 @@
-import type { XPSummary, StreakInfo, AchievementInfo } from "@/lib/services";
+import type {
+  XPSummary,
+  StreakInfo,
+  AchievementInfo,
+  CourseProgress,
+  LeaderboardEntry,
+  Credential,
+} from "@/lib/services";
 
 export const MOCK_XP_SUMMARY: XPSummary = {
   totalXp: 2750,
@@ -83,3 +90,59 @@ function generateMockActivityDates(): string[] {
 }
 
 export const MOCK_ACTIVITY_DATES: string[] = generateMockActivityDates();
+
+export const MOCK_COURSE_PROGRESS: CourseProgress[] = [
+  {
+    courseId: "c1",
+    courseSlug: "solana-fundamentals",
+    courseTitle: "Solana Fundamentals",
+    progressPct: 65,
+    completedLessons: 13,
+    totalLessons: 20,
+    status: "active",
+    enrolledAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 14).toISOString(),
+    completedAt: null,
+  },
+  {
+    courseId: "c2",
+    courseSlug: "defi-on-solana",
+    courseTitle: "DeFi on Solana",
+    progressPct: 30,
+    completedLessons: 6,
+    totalLessons: 20,
+    status: "active",
+    enrolledAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7).toISOString(),
+    completedAt: null,
+  },
+  {
+    courseId: "c0",
+    courseSlug: "intro-to-solana",
+    courseTitle: "Intro to Solana",
+    progressPct: 100,
+    completedLessons: 10,
+    totalLessons: 10,
+    status: "completed",
+    enrolledAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(),
+    completedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 20).toISOString(),
+  },
+];
+
+export const MOCK_USER_RANK: LeaderboardEntry = {
+  userId: "mock",
+  displayName: "You",
+  avatarUrl: null,
+  totalXp: 2750,
+  level: 7,
+  rank: 42,
+};
+
+export const MOCK_CREDENTIALS: Credential[] = [
+  {
+    courseId: "c0",
+    courseTitle: "Intro to Solana",
+    track: "Solana Fundamentals",
+    issuedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 20).toISOString(),
+    onChain: false,
+    mintAddress: null,
+  },
+];
