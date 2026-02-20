@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface LessonTopBarProps {
   courseSlug: string;
@@ -14,6 +15,7 @@ interface LessonTopBarProps {
   totalLessons: number;
   completedCount: number;
   onMenuToggle: () => void;
+  alwaysShowMenu?: boolean;
 }
 
 export function LessonTopBar({
@@ -24,6 +26,7 @@ export function LessonTopBar({
   totalLessons,
   completedCount,
   onMenuToggle,
+  alwaysShowMenu,
 }: LessonTopBarProps) {
   const t = useTranslations("lesson");
   const progressPct =
@@ -57,7 +60,7 @@ export function LessonTopBar({
         <Button
           variant="ghost"
           size="icon"
-          className="h-8 w-8 lg:hidden"
+          className={cn("h-8 w-8", alwaysShowMenu ? "" : "lg:hidden")}
           onClick={onMenuToggle}
         >
           <Menu className="h-4 w-4" />

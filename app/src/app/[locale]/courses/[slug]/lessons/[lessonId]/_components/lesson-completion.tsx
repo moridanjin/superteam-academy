@@ -10,6 +10,7 @@ interface LessonCompletionProps {
   xpReward: number;
   isLoading: boolean;
   onComplete: () => void;
+  disabled?: boolean;
 }
 
 export function LessonCompletion({
@@ -17,6 +18,7 @@ export function LessonCompletion({
   xpReward,
   isLoading,
   onComplete,
+  disabled,
 }: LessonCompletionProps) {
   const t = useTranslations("lesson");
 
@@ -35,7 +37,7 @@ export function LessonCompletion({
     <div className="mt-6">
       <Button
         onClick={onComplete}
-        disabled={isLoading}
+        disabled={isLoading || disabled}
         className={cn(
           "from-solana-purple to-solana-blue w-full gap-2 bg-gradient-to-r text-white",
           "hover:from-solana-purple/90 hover:to-solana-blue/90",
@@ -52,6 +54,11 @@ export function LessonCompletion({
           <span className="ml-1 text-xs opacity-70">+{xpReward} XP</span>
         )}
       </Button>
+      {disabled && (
+        <p className="mt-2 text-center text-xs text-neutral-600">
+          {t("completeChallenge")}
+        </p>
+      )}
     </div>
   );
 }
