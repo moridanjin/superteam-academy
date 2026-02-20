@@ -20,7 +20,7 @@ export function useStreak() {
 
   const fetch = useCallback(async () => {
     if (!user || !services) {
-      setData(null);
+      setData({ ...MOCK_STREAK_INFO, activityDates: MOCK_ACTIVITY_DATES });
       setLoading(false);
       return;
     }

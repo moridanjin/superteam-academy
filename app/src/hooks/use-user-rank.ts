@@ -15,7 +15,7 @@ export function useUserRank() {
 
   const fetch = useCallback(async () => {
     if (!user || !services) {
-      setData(null);
+      setData(MOCK_USER_RANK);
       setLoading(false);
       return;
     }

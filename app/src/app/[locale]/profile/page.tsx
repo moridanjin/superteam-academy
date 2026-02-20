@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { AppShell } from "@/components/app-shell";
-import { ProtectedRoute } from "@/components/auth/protected-route";
 import { FadeIn } from "@/components/motion";
 import { ProfileContent } from "./_components/profile-content";
 
@@ -44,12 +43,10 @@ export default async function ProfilePage({
 
   return (
     <AppShell>
-      <ProtectedRoute>
-        <PageHeader />
-        <div className="mx-auto max-w-6xl px-4 py-8">
-          <ProfileContent isOwnProfile />
-        </div>
-      </ProtectedRoute>
+      <PageHeader />
+      <div className="mx-auto max-w-6xl px-4 py-8">
+        <ProfileContent isOwnProfile />
+      </div>
     </AppShell>
   );
 }

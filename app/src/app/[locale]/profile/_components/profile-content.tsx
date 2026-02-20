@@ -10,6 +10,19 @@ import { useCredentials } from "@/hooks/use-credentials";
 import { useServicesMaybe } from "@/lib/services";
 import { createClient } from "@/lib/supabase/client";
 import type { Tables } from "@/lib/supabase/database.types";
+
+const MOCK_PROFILE: Tables<"users"> = {
+  id: "mock",
+  display_name: "Solana Learner",
+  bio: "Learning to build on Solana",
+  avatar_url: null,
+  wallet_address: null,
+  locale: "en",
+  total_xp: 2750,
+  level: 7,
+  created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
+  updated_at: new Date().toISOString(),
+};
 import type { AchievementInfo, XPSummary } from "@/lib/services";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FadeInStagger, FadeInItem } from "@/components/motion";
@@ -83,7 +96,9 @@ export function ProfileContent({ userId, isOwnProfile }: ProfileContentProps) {
   );
 
   // Resolve active data
-  const activeProfile = isOwnProfile ? profile : publicProfile;
+  const activeProfile = isOwnProfile
+    ? (profile ?? MOCK_PROFILE)
+    : publicProfile;
   const activeXp = isOwnProfile ? xp : publicXp;
   const activeAchievements = isOwnProfile
     ? ownAchievements

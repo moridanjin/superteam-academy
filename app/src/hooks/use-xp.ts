@@ -15,7 +15,7 @@ export function useXP() {
 
   const fetch = useCallback(async () => {
     if (!user || !services) {
-      setData(null);
+      setData(MOCK_XP_SUMMARY);
       setLoading(false);
       return;
     }

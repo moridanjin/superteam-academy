@@ -15,7 +15,7 @@ export function useAchievements() {
 
   const fetch = useCallback(async () => {
     if (!user || !services) {
-      setData(null);
+      setData(MOCK_ACHIEVEMENTS);
       setLoading(false);
       return;
     }

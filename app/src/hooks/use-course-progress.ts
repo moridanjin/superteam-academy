@@ -15,7 +15,7 @@ export function useCourseProgress() {
 
   const fetch = useCallback(async () => {
     if (!user || !services) {
-      setData(null);
+      setData(MOCK_COURSE_PROGRESS);
       setLoading(false);
       return;
     }

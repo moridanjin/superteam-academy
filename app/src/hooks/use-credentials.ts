@@ -17,7 +17,7 @@ export function useCredentials(userId?: string) {
 
   const fetch = useCallback(async () => {
     if (!targetId || !services) {
-      setData(null);
+      setData(MOCK_CREDENTIALS);
       setLoading(false);
       return;
     }

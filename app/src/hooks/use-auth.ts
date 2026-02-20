@@ -16,21 +16,32 @@ export function useAuth() {
     const supabase = createClient();
 
     async function getInitialSession() {
-      const {
-        data: { user: currentUser },
-      } = await supabase.auth.getUser();
-      setUser(currentUser);
-
-      if (currentUser) {
-        const { data } = await supabase
-          .from("users")
-          .select("*")
-          .eq("id", currentUser.id)
-          .single();
-        setProfile(data as Profile | null);
+      // Skip auth when Supabase is not configured
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+      if (!url || url.includes("placeholder")) {
+        setLoading(false);
+        return;
       }
 
-      setLoading(false);
+      try {
+        const {
+          data: { user: currentUser },
+        } = await supabase.auth.getUser();
+        setUser(currentUser);
+
+        if (currentUser) {
+          const { data } = await supabase
+            .from("users")
+            .select("*")
+            .eq("id", currentUser.id)
+            .single();
+          setProfile(data as Profile | null);
+        }
+      } catch {
+        // Supabase unreachable — continue as unauthenticated
+      } finally {
+        setLoading(false);
+      }
     }
 
     getInitialSession();
