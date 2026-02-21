@@ -177,7 +177,7 @@ Summon specialized agents for complex tasks:
 | 6 - Dashboard | US-018: User Dashboard | Done |
 | 6 - Dashboard | US-019: User Profile | Done |
 | 7 - Leaderboard | US-020: Leaderboard | Done |
-| 7 - Settings | US-021: Settings Page | Not started |
+| 7 - Settings | US-021: Settings Page | Done |
 | 7 - Certs | US-022: Certificate View | Not started |
 | 8 - Polish | US-023: Analytics & Monitoring | Not started |
 | 8 - Polish | US-024: Performance Optimization | Not started |
