@@ -183,7 +183,7 @@ Summon specialized agents for complex tasks:
 | 8 - Polish | US-024: Performance Optimization | Done |
 | 8 - Polish | US-025: Documentation | Done |
 | 9 - Bonus | US-026: Admin Dashboard | Done |
-| 9 - Bonus | US-027: E2E Tests | Not started |
+| 9 - Bonus | US-027: E2E Tests | Done |
 | 9 - Bonus | US-028: Community Forum | Not started |
 | 9 - Bonus | US-029: PWA Support | Not started |
 | 10 - Submit | US-030: Submission Deliverables | Not started |
