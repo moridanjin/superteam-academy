@@ -20,6 +20,7 @@ const MOCK_PROFILE: Tables<"users"> = {
   locale: "en",
   total_xp: 2750,
   level: 7,
+  is_admin: false,
   created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
   updated_at: new Date().toISOString(),
 };

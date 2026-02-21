@@ -85,6 +85,14 @@ export function UserMenu() {
           <DropdownMenuItem onClick={() => router.push("/settings")}>
             {t("settings")}
           </DropdownMenuItem>
+          {profile?.is_admin && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => router.push("/admin")}>
+                {t("admin")}
+              </DropdownMenuItem>
+            </>
+          )}
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={async () => {

@@ -18,7 +18,8 @@
     "dashboard": "Dashboard",
     "settings": "Settings",
     "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "admin": "Admin"
   },
   "home": {
     "title": "Superteam Academy",
@@ -542,6 +543,32 @@
     "backToAll": "All Certificates",
     "notFound": "Certificate not found",
     "notFoundDescription": "This certificate doesn't exist or you don't have access to it."
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "subtitle": "Platform analytics and user management.",
+    "tabOverview": "Overview",
+    "tabUsers": "Users",
+    "tabCourses": "Courses",
+    "statTotalUsers": "Total Users",
+    "statActiveUsers7d": "Active (7d)",
+    "statTotalEnrollments": "Total Enrollments",
+    "statCompletionRate": "Completion Rate",
+    "usersSearchPlaceholder": "Search users...",
+    "usersEmpty": "No users found.",
+    "colUser": "User",
+    "colXp": "XP",
+    "colLevel": "Level",
+    "colRole": "Role",
+    "colCourse": "Course",
+    "colEnrollments": "Enrollments",
+    "colCompletionRate": "Completion Rate",
+    "colAvgTime": "Avg Time",
+    "coursesEmpty": "No course data available.",
+    "chartUserGrowth": "User Growth (30d)",
+    "chartDailyActive": "Daily Active Learners (14d)",
+    "chartPopularCourses": "Top Courses by Enrollment",
+    "loadError": "Failed to load admin data."
   },
   "language": {
     "label": "Language",

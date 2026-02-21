@@ -19,6 +19,7 @@ export type Database = {
           locale: "en" | "pt-br" | "es";
           total_xp: number;
           level: number;
+          is_admin: boolean;
           created_at: string;
           updated_at: string;
         };
@@ -31,6 +32,7 @@ export type Database = {
           locale?: "en" | "pt-br" | "es";
           total_xp?: number;
           level?: number;
+          is_admin?: boolean;
           created_at?: string;
           updated_at?: string;
         };
@@ -43,6 +45,7 @@ export type Database = {
           locale?: "en" | "pt-br" | "es";
           total_xp?: number;
           level?: number;
+          is_admin?: boolean;
           created_at?: string;
           updated_at?: string;
         };

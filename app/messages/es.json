@@ -18,7 +18,8 @@
     "dashboard": "Panel",
     "settings": "Configuración",
     "signIn": "Iniciar sesión",
-    "signOut": "Cerrar sesión"
+    "signOut": "Cerrar sesión",
+    "admin": "Admin"
   },
   "home": {
     "title": "Superteam Academy",
@@ -539,6 +540,32 @@
     "backToAll": "Todos los Certificados",
     "notFound": "Certificado no encontrado",
     "notFoundDescription": "Este certificado no existe o no tienes acceso."
+  },
+  "admin": {
+    "title": "Panel Admin",
+    "subtitle": "Análisis de la plataforma y gestión de usuarios.",
+    "tabOverview": "Resumen",
+    "tabUsers": "Usuarios",
+    "tabCourses": "Cursos",
+    "statTotalUsers": "Total de Usuarios",
+    "statActiveUsers7d": "Activos (7d)",
+    "statTotalEnrollments": "Total de Inscripciones",
+    "statCompletionRate": "Tasa de Finalización",
+    "usersSearchPlaceholder": "Buscar usuarios...",
+    "usersEmpty": "No se encontraron usuarios.",
+    "colUser": "Usuario",
+    "colXp": "XP",
+    "colLevel": "Nivel",
+    "colRole": "Rol",
+    "colCourse": "Curso",
+    "colEnrollments": "Inscripciones",
+    "colCompletionRate": "Tasa de Finalización",
+    "colAvgTime": "Tiempo Promedio",
+    "coursesEmpty": "No hay datos de cursos disponibles.",
+    "chartUserGrowth": "Crecimiento de Usuarios (30d)",
+    "chartDailyActive": "Aprendices Activos Diarios (14d)",
+    "chartPopularCourses": "Cursos Más Populares",
+    "loadError": "Error al cargar datos del admin."
   },
   "language": {
     "label": "Idioma",
