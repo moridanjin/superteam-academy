@@ -53,7 +53,6 @@ export function ProfileHeader({
               width={80}
               height={80}
               className="h-20 w-20 rounded-full object-cover"
-              unoptimized
             />
           ) : (
             (profile.display_name?.[0] ?? "?").toUpperCase()

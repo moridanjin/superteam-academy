@@ -7,16 +7,28 @@ import { ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { Group as ResizablePanelGroup } from "react-resizable-panels";
 import type { Course, Lesson } from "@/lib/cms/types";
 import { useIsMobile } from "@/hooks/use-is-mobile";
+import dynamic from "next/dynamic";
 import { LessonTopBar } from "./lesson-top-bar";
 import { LessonContent } from "./lesson-content";
 import { LessonSidebar } from "./lesson-sidebar";
 import { LessonNav } from "./lesson-nav";
 import { LessonCompletion } from "./lesson-completion";
 import { MobileSidebarSheet } from "./mobile-sidebar-sheet";
-import { ChallengePanel } from "./challenge-panel";
-import { ChallengeTabs } from "./challenge-tabs";
-import { SolanaPlayground } from "./solana-playground";
 import { PlaygroundFallback } from "./playground-fallback";
+
+const ChallengePanel = dynamic(() =>
+  import("./challenge-panel").then((m) => ({ default: m.ChallengePanel }))
+);
+const ChallengeTabs = dynamic(() =>
+  import("./challenge-tabs").then((m) => ({ default: m.ChallengeTabs }))
+);
+const SolanaPlayground = dynamic(
+  () =>
+    import("./solana-playground").then((m) => ({
+      default: m.SolanaPlayground,
+    })),
+  { ssr: false }
+);
 
 interface FlatLesson {
   lesson: Lesson;

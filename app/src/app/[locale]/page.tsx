@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { AppShell } from "@/components/app-shell";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/motion";
+
+export const metadata: Metadata = {
+  title: "Superteam Academy — Learn Solana Development",
+  description:
+    "Interactive courses, on-chain credentials, and gamified progression. Master Solana development from fundamentals to advanced DeFi.",
+  openGraph: {
+    title: "Superteam Academy — Learn Solana Development",
+    description:
+      "Interactive courses, on-chain credentials, and gamified progression. Master Solana development from fundamentals to advanced DeFi.",
+  },
+};
 
 /* ────────────────────────────────────────── Hero ────────────────────────────── */
 
