@@ -181,7 +181,7 @@ Summon specialized agents for complex tasks:
 | 7 - Certs | US-022: Certificate View | Done |
 | 8 - Polish | US-023: Analytics & Monitoring | Not started |
 | 8 - Polish | US-024: Performance Optimization | Done |
-| 8 - Polish | US-025: Documentation | Not started |
+| 8 - Polish | US-025: Documentation | Done |
 | 9 - Bonus | US-026: Admin Dashboard | Not started |
 | 9 - Bonus | US-027: E2E Tests | Not started |
 | 9 - Bonus | US-028: Community Forum | Not started |
