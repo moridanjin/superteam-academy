@@ -136,6 +136,72 @@ export const MOCK_USER_RANK: LeaderboardEntry = {
   rank: 42,
 };
 
+const MOCK_NAMES = [
+  "Alex Chen",
+  "Maria Santos",
+  "Raj Patel",
+  "Luna Kim",
+  "Omar Hassan",
+  "Sofia Rodriguez",
+  "Yuki Tanaka",
+  "Priya Sharma",
+  "James O'Brien",
+  "Amara Osei",
+  "Viktor Petrov",
+  "Ines Martinez",
+  "Tariq Al-Farsi",
+  "Mia Johansson",
+  "Liam Park",
+  "Fatima Zahra",
+  "Diego Ruiz",
+  "Aiko Sato",
+  "Carlos Mendez",
+  "Zara Ahmed",
+  "Nikolai Volkov",
+  "Elena Costa",
+  "Arjun Nair",
+  "Chloe Dubois",
+  "Marcus Williams",
+  "Hana Lee",
+  "Thiago Oliveira",
+  "Naomi Brooks",
+  "Kenji Mori",
+  "Isla Campbell",
+  "Andrei Popescu",
+  "Layla Ibrahim",
+  "Felix Braun",
+  "Ava Mitchell",
+  "Ravi Kumar",
+  "Camila Perez",
+  "Oscar Lindqvist",
+  "Nadia Khoury",
+  "Dante Rossi",
+  "Mei Wong",
+  "Lucas Fischer",
+  "Sana Begum",
+  "Hugo Laurent",
+  "Anya Ivanova",
+  "Mateo Diaz",
+  "Freya Andersen",
+  "Sahil Desai",
+  "Clara Novak",
+  "Emeka Okonkwo",
+  "Lena Mueller",
+];
+
+function generateMockLeaderboard(): LeaderboardEntry[] {
+  return MOCK_NAMES.map((name, i) => ({
+    userId: `user-${i + 1}`,
+    displayName: name,
+    avatarUrl: null,
+    totalXp: Math.max(100, 12000 - i * 200 - Math.floor(Math.random() * 100)),
+    level: Math.max(1, Math.floor((12000 - i * 200) / 500)),
+    rank: i + 1,
+  }));
+}
+
+export const MOCK_LEADERBOARD: LeaderboardEntry[] = generateMockLeaderboard();
+
 export const MOCK_CREDENTIALS: Credential[] = [
   {
     courseId: "c0",
